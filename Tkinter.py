@@ -3,30 +3,29 @@ from turtle import left
 #tout est commenté => Romain meilleur dev 
 
 fenetre = Tk()
-fenetre.geometry("400x600")
 fenetre.iconbitmap("style/reveil.ico")
 fenetre.title(string='SmartClock3000') # titre de la page
 
-#création des trois sous frame principales : (voir maquette.png)
+#création des sous frame principales : (voir maquette.png)
 
-#niveau 1
-frameNiv1 = Frame(fenetre,height=250, borderwidth=2,bg='red')
-frameNiv1.pack(fill=X)
-
-frameEfreiClock = Frame(frameNiv1,width=150,height=130, borderwidth=2,bg='purple')
-frameEfreiClock.pack(side=RIGHT)
-
-frameTempsAvtAlarme = Frame(frameNiv1,width=200,height=130, borderwidth=2,bg='orange')
-frameTempsAvtAlarme.pack(side=LEFT)
-
-#niveau 2
-frameNiv2 = Frame(fenetre,height=150,borderwidth=2,bg="blue")
-frameNiv2.pack(fill=X)
-
-#niveau 3
-frameNiv3 = Frame(fenetre,height=300,borderwidth=2,bg="green")
-frameNiv3.pack(fill=X)
+#containerRight 
+frameRIGHT = Frame(fenetre, borderwidth=2, relief=GROOVE)
+frameRIGHT.pack(side=RIGHT, padx=5, pady=5,expand=True,fill=BOTH)
+Label(frameRIGHT, text="Frame right").pack(padx=10, pady=10)
 
 
+#containerLeft
+frameLeft = Frame(fenetre, borderwidth=2, relief=GROOVE)
+frameLeft.pack(side=LEFT, padx=5, pady=5,expand=True,fill=BOTH)
+Label(frameLeft, text="Frame Left").pack(padx=10, pady=10)
+
+#Les sous container de Left
+frameEfreiLogo = Frame(frameLeft, borderwidth=2, relief=GROOVE)
+frameEfreiLogo.pack(side=TOP, padx=5, pady=5,expand=True,fill=BOTH)
+Label(frameEfreiLogo, text="Frame Logo Efrei").pack(padx=10, pady=10)
+
+frameTRAA = Frame(frameLeft, borderwidth=2, relief=GROOVE) # TRAA = Temps restant avant alarme
+frameTRAA.pack(side=BOTTOM, padx=5, pady=5,expand=True,fill=BOTH)
+Label(frameTRAA, text="Frame TRAA").pack(padx=10, pady=10)
 
 fenetre.mainloop()
