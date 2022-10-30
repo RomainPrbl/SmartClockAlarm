@@ -1,16 +1,31 @@
-from tkinter import * 
+from tkinter import *
+#tout est commenté => Romain meilleur dev 
 
 fenetre = Tk()
+fenetre.geometry("400x600")
+fenetre.iconbitmap("style/reveil.ico")
+fenetre.title(string='SmartClock3000') # titre de la page
 
-label = Label(fenetre, text="Hello World")
-label.pack()
-# bouton de sortie
-bouton=Button(fenetre, text="Fermer", command=fenetre.quit)
-bouton.pack()
-label = Label(fenetre, text="Texte par défaut", bg="yellow")
-label.pack()
-value = StringVar() 
-value.set("texte par défaut")
-entree = Entry(fenetre, textvariable=value, width=30)
-entree.pack()
+#création des trois sous frame principales : (voir maquette.png)
+
+#niveau 1
+frameNiv1 = Frame(fenetre,height=150, borderwidth=2,bg='red')
+frameNiv1.pack(fill=X)
+
+frameEfreiClock = Frame(frameNiv1,width=150,height=130, borderwidth=2,bg='purple')
+frameEfreiClock.pack()
+
+frameTempsAvtAlarme = Frame(frameNiv1,width=200,height=130, borderwidth=2,bg='orange')
+frameTempsAvtAlarme.pack()
+
+#niveau 2
+frameNiv2 = Frame(fenetre,width=400,height=150,borderwidth=2,bg="blue")
+frameNiv2.pack()
+
+#niveau 3
+frameNiv3 = Frame(fenetre,width=400,height=300,borderwidth=2,bg="green")
+frameNiv3.pack()
+
+
+
 fenetre.mainloop()
