@@ -1,9 +1,9 @@
 from tkinter import *
 from turtle import left
 from PIL import ImageTk, Image
-#tout est commenté => Romain meilleur dev 
 
 fenetre = Tk()
+fenetre.geometry('750x250')
 fenetre.iconbitmap("style/reveil.ico")
 fenetre.title(string='SmartClock3000') # titre de la page
 
