@@ -6,5 +6,7 @@ years=date.year
 months=date.month
 days=date.day
 hours=date.hour
-print(years)
+minutes=date.minute
+
+print(minutes)
 
