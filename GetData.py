@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import icalendar 
 import pytz
 import datetime
+from time import sleep
 
 CONFIG = {}
 
@@ -23,7 +24,6 @@ def get_agenda_():
     return cal
 
 def get_current_event(calendar):
-    print(calendar)
     current_utc = pytz.UTC.localize(datetime.datetime.utcnow())
     events = []
     for event in calendar.walk():
@@ -36,9 +36,11 @@ def get_current_event(calendar):
             events.append(
                 {"start": start, "end": end, "nom_cours": summary, "salle": location, "nom_prof": description})
     for event in events:
+        print(event)
+        sleep(5)
         if event["start"] < current_utc < event["end"]:
             return event
-    print("cc",event)
+    print("ICIIIIIIIIIIIIII",event)
     return None
 
 if __name__ == "__main__":
