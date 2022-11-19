@@ -1,0 +1,11 @@
+Taches de Romain :
+1) Recherche concernant le module tkinter de pyhton 
+2) Réalisation d'une maquette du l'application souhaité 
+3) tentative de creation de cette maquette avec tkinter mais le resultat ne correspondait pas aux attentes 
+4) Modification de la maquette pour quelle soit plus simple a realiser avec tkinter 
+5) Realisation de cette maquette 
+
+6)Recherche concernant un moyen de recuperer les heures de reveil a partir du site d'efrei 
+7)Nombreuses tentatives de recuperation soldés par des echecs 
+8)Recuperation d'une API efrei permettant de recuperer les donnees 
+9)Tentative d'utilisation de cette API en cours...
