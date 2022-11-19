@@ -1,5 +1,6 @@
 from calendar import month
 from datetime import datetime
+import re
 
 date=datetime.now()
 years=date.year
@@ -8,5 +9,11 @@ days=date.day
 hours=date.hour
 minutes=date.minute
 
-print(minutes)
+def verifDate(dateToGet) :
+    newdate=datetime.now()
+    if(dateToGet==newdate) :
+        return 1
+    else : 
+        return 0
+
 
