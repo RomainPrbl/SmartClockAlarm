@@ -16,4 +16,16 @@ def verifDate(dateToGet) :
     else : 
         return 0
 
-
+def getDateIntoList(date) :
+    List=[]
+    years=date.year
+    List.append(years)
+    months=date.month
+    List.append(months)
+    days=date.day
+    List.append(days)
+    hours=date.hour
+    List.append(hours)
+    minutes=date.minute
+    List.append(minutes)
+    return List
