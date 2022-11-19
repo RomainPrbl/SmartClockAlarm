@@ -29,3 +29,4 @@ def getDateIntoList(date) :
     minutes=date.minute
     List.append(minutes)
     return List
+
