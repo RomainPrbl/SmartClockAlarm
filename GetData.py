@@ -5,25 +5,24 @@ import pytz
 import datetime
 from time import sleep,time
 
-CONFIG = {}
 
-def recuperer_planing():
-    print("======== PLANNING MYEFREI ========")
-    print("Veuillez vous rendre sur votre planning MyEfrei (https://www.myefrei.fr/portal/student/planning)")
-    print("Et cliquer sur le bouton \"COPIER URL PLANNING (ICAL)\"")
-    CONFIG["agenda_url"] = input("Puis collez le lien ici : ").strip().replace("webcal://", "https://")
-    r = requests.get(CONFIG["agenda_url"])
+
+def obtenirLienPlanning():
+    data = {}
+    data["agenda_url"] = input("Collez le lien ici : ").strip().replace("webcal://", "https://")
+    r = requests.get(data["agenda_url"])
     if r.status_code != 200:
         print("Erreur : Le lien que vous avez entré n'est pas valide.")
-        recuperer_planing()
+        obtenirLienPlanning()
     print(" ")
+    return data
 
-def get_agenda_():
-    r = requests.get(CONFIG["agenda_url"])
+def passerDuLienAuCalendrier(data):
+    r = requests.get(data["agenda_url"])
     cal = icalendar.Calendar.from_ical(r.content)
     return cal
 
-def get_current_event(calendar):
+def recupererLesEvents(calendar):
 
     current_utc = pytz.UTC.localize(datetime.datetime.utcnow())
     events = []
@@ -37,40 +36,11 @@ def get_current_event(calendar):
             events.append(
                 {"start": start, "end": end, "nom_cours": summary, "salle": location, "nom_prof": description})
     for event in events:
-        #if event["start"] <datetime.date.fromtimestamp(time()):
-        print(event["start"],type(event["start"]))
-        sleep(2)
-        if event["start"] < current_utc < event["end"]:
-            return event
+        if event["start"] > datetime.datetime.now(datetime.timezone.utc): # le datetime n'est pas naif !!!
+            print(event["start"],event["nom_cours"],type(event["start"]))
+            sleep(2)
     return None
 
 if __name__ == "__main__":
-    recuperer_planing()
-    print(get_current_event(get_agenda_()))
+    print(recupererLesEvents(passerDuLienAuCalendrier(obtenirLienPlanning())))
 
-
-
-
-
-
-
-
-"""
-s=requests.Session()
-url = "https://www.myefrei.fr/portal/student/planning"
-rget = s.get(url)
-
-token = re.search("name=\"_recherche_recherchertype\[_token\]\" value=\"([a-z0-9]{40})\"", rget.text).group(1)
-payload = {"_recherche_recherchertype[_token]": token}
-
-login_data = {"username" : "20210663","password" : "}Ro40/Pr35","_csrf" : str(token)}
-print(token,type(token))
-
-s.post(url,data=login_data)
-
-r = s.get("https://www.myefrei.fr/portal/student/planning")
-print(r.text)
-soup = BeautifulSoup(r.text,features="html.parser")
-title = soup.find("title") 
-print(title.text)
-"""
