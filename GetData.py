@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import icalendar 
 import pytz
 import datetime
+import os
 from time import sleep,time
 
 def recupLienDuTxt():
@@ -79,6 +80,7 @@ def convertirDateDigiEnPhrase(datetime):
     return str(datetime.day,' ',mois[datetime.month],' ',datetime.year)
 
 if __name__ == "__main__":
-    start = recupererLeProchainCours()["start"]
-    print(convertirDateDigiEnPhrase(start))
-
+    liste = recupererLesEvents(passerDuLienAuCalendrier(obtenirLienPlanning()))
+    os.system("cls")
+    for i in range(10):
+        print(liste[i]["nom_cours"],liste[i]["start"])
