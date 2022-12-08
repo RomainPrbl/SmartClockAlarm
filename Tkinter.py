@@ -1,6 +1,7 @@
 from tkinter import *
 from turtle import left
 from PIL import ImageTk, Image
+import GetData
 
 fenetre = Tk()
 fenetre.geometry('750x250')
@@ -20,7 +21,7 @@ Label(frameStatus, text="connecte").pack()
 frameAlarmeDate = Frame(frameRIGHT, borderwidth=2, relief=GROOVE)
 frameAlarmeDate.pack(side=BOTTOM, padx=5, pady=5,expand=True,fill=BOTH)
 Label(frameAlarmeDate, text="La prochaine alarme et prevu pour : ").pack(padx=10, pady=10)
-Label(frameAlarmeDate, text="Vendredi 29 janvier à 8h30").pack()
+Label(frameAlarmeDate, text=str(GetData.recupererLeProchainCours()["start"])).pack()
 #containerLeft
 frameLeft = Frame(fenetre, borderwidth=2, relief=GROOVE)
 frameLeft.pack(side=LEFT, padx=5, pady=5,expand=True,fill=BOTH)
